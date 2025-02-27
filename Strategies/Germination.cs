@@ -507,7 +507,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 				s.plantDensityAfterGermiantion = plantDensityAfterGermination;
 			}
 
-			s.hasGerminationHeppened = hasGerminationHappened;
+			s.hasGerminationHappened = hasGerminationHappened;
 			#endregion
 
 
