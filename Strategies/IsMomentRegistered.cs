@@ -316,20 +316,30 @@ namespace PhenologyMaizeCrop2ML.Strategies
         
         private void CalculateModel(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
         {
-            if (s.cumulTT[6] > 0)
-            {
-                List<string> calendarMoments = s1.calendarMoments;
-                List<DateTime> calendarDates = s1.calendarDates;
-                List<double> calendarCumuls = s1.calendarCumuls;
+            // modele unitaire rajouté pour avoir un modèle composite avec juste une pile d'appel
+            double cumulTT6 = s.cumulTT[6];
+            List<string> calendarMoments = s1.calendarMoments;
+            List<DateTime> calendarDates = s1.calendarDates;
+            List<double> calendarCumuls = s1.calendarCumuls;
 
-                if (calendarMoments.Contains("FlagLeafLiguleJustVisible")) s.isMomentRegistredBBCH_1n = 1;
-                else s.isMomentRegistredBBCH_1n = 0;
+
+            double cumulTTFromBBCH_63;
+            double cumulTTFromBBCH_1n;
+            double cumulTTFromLastLeaf;
+            int isMomentRegistredBBCH_1n;
+
+            if (cumulTT6 > 0)
+            {
+               
+
+                if (calendarMoments.Contains("FlagLeafLiguleJustVisible")) isMomentRegistredBBCH_1n = 1;
+                else isMomentRegistredBBCH_1n = 0;
 
                 if (calendarMoments.Contains("Anthesis"))
                 {
 
                     int indexAnth = calendarMoments.IndexOf("Anthesis");
-                    s.cumulTTFromBBCH_63 = s.cumulTT[6] - s.calendarCumuls[indexAnth];
+                    cumulTTFromBBCH_63 = cumulTT6 - calendarCumuls[indexAnth];
 
                 }
                 if (calendarMoments.Contains("FlagLeafLiguleJustVisible"))
@@ -337,15 +347,20 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
                     int indexFlagLeaf  = calendarMoments.IndexOf("FlagLeafLiguleJustVisible");
 
-                    s.cumulTTFromBBCH_1n = s.cumulTT[6] - s.calendarCumuls[indexFlagLeaf];
+                    cumulTTFromBBCH_1n = cumulTT6 - calendarCumuls[indexFlagLeaf];
 
                 }
                 if (calendarMoments.Contains("LastLeafVisible"))
                 {
 
                     int indexLastLeaf = calendarMoments.IndexOf("LastLeafVisible");
-                    s.cumulTTFromLastLeaf = s.cumulTT[6] - s.calendarCumuls[indexLastLeaf];
+                    cumulTTFromLastLeaf = cumulTT6 - calendarCumuls[indexLastLeaf];
                 }
+
+                s.cumulTTFromBBCH_63 = cumulTTFromBBCH_63;
+                s.cumulTTFromBBCH_1n = cumulTTFromBBCH_1n;
+                s.cumulTTFromLastLeaf = cumulTTFromLastLeaf;
+                s.isMomentRegistredBBCH_1n = isMomentRegistredBBCH_1n;
 
             }
         }

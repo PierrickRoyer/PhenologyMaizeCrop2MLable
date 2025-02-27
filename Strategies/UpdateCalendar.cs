@@ -327,6 +327,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
         }
         private void CalculateModel(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
         {
+            //modele unitaire rajouté pour avoir un modèle composite avec juste une pile d'appel
             double cumulTT_day = s.cumulTT[6];
             double phase = s.phase;
 

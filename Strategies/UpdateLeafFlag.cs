@@ -455,7 +455,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 					if (hasFlagLeafAppeared_t1 == 0 && (Nfinal > 0 && Ntip == (int)(Nfinal + 0.5))) // NFinal > 0 ???!?
 					{
 						hasFlagLeafAppeared_t = 1;
-						//MLucilelCode with Calendar :
+						//LucilelCode with Calendar :
 						/*if (!s1.Calendar[GrowthStageMaize.LastLeafVisible].HasValue)
 						{
 							s.Calendar.Set(GrowthStageMaize.LastLeafVisible, s.currentdate, s.cumulTT);
@@ -518,9 +518,6 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 
 
-
-				//End of custom code. Do not place your custom code below. It will be overwritten by a future code generation.
-				//PLACE YOUR CUSTOM CODE ABOVE - GENERATED CODE START - Section1 
 			}
 
 
