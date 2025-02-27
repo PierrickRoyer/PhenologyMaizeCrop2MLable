@@ -318,9 +318,9 @@ namespace PhenologyMaizeCrop2ML.Strategies
         {
             // modele unitaire rajouté pour avoir un modèle composite avec juste une pile d'appel
             double cumulTT6 = s.cumulTT[6];
-            List<string> calendarMoments = s1.calendarMoments;
-            List<DateTime> calendarDates = s1.calendarDates;
-            List<double> calendarCumuls = s1.calendarCumuls;
+            List<string> calendarMoments_t1 = s1.calendarMoments;
+            List<DateTime> calendarDates_t1 = s1.calendarDates;
+            List<double> calendarCumuls_t1 = s1.calendarCumuls;
 
 
             double cumulTTFromBBCH_63;
@@ -328,33 +328,40 @@ namespace PhenologyMaizeCrop2ML.Strategies
             double cumulTTFromLastLeaf;
             int isMomentRegistredBBCH_1n;
 
+            List<string> calendarMoments_t = new List<string>();
+            List<DateTime> calendarDates_t = new List<DateTime>();
+            List<double> calendarCumuls_t = new List<double>();
+
+            calendarMoments_t = new List<string>(calendarMoments_t1);
+            calendarCumuls_t = new List<double>(calendarCumuls_t1);
+            calendarDates_t = new List<DateTime>(calendarDates_t1);
             if (cumulTT6 > 0)
             {
                
 
-                if (calendarMoments.Contains("FlagLeafLiguleJustVisible")) isMomentRegistredBBCH_1n = 1;
+                if (calendarMoments_t1.Contains("FlagLeafLiguleJustVisible")) isMomentRegistredBBCH_1n = 1;
                 else isMomentRegistredBBCH_1n = 0;
 
-                if (calendarMoments.Contains("Anthesis"))
+                if (calendarMoments_t1.Contains("Anthesis"))
                 {
 
-                    int indexAnth = calendarMoments.IndexOf("Anthesis");
-                    cumulTTFromBBCH_63 = cumulTT6 - calendarCumuls[indexAnth];
+                    int indexAnth = calendarMoments_t1.IndexOf("Anthesis");
+                    cumulTTFromBBCH_63 = cumulTT6 - calendarCumuls_t1[indexAnth];
 
                 }
-                if (calendarMoments.Contains("FlagLeafLiguleJustVisible"))
+                if (calendarMoments_t1.Contains("FlagLeafLiguleJustVisible"))
                 {
 
-                    int indexFlagLeaf  = calendarMoments.IndexOf("FlagLeafLiguleJustVisible");
+                    int indexFlagLeaf  = calendarMoments_t1.IndexOf("FlagLeafLiguleJustVisible");
 
-                    cumulTTFromBBCH_1n = cumulTT6 - calendarCumuls[indexFlagLeaf];
+                    cumulTTFromBBCH_1n = cumulTT6 - calendarCumuls_t1[indexFlagLeaf];
 
                 }
-                if (calendarMoments.Contains("LastLeafVisible"))
+                if (calendarMoments_t1.Contains("LastLeafVisible"))
                 {
 
-                    int indexLastLeaf = calendarMoments.IndexOf("LastLeafVisible");
-                    cumulTTFromLastLeaf = cumulTT6 - calendarCumuls[indexLastLeaf];
+                    int indexLastLeaf = calendarMoments_t1.IndexOf("LastLeafVisible");
+                    cumulTTFromLastLeaf = cumulTT6 - calendarCumuls_t1[indexLastLeaf];
                 }
 
                 s.cumulTTFromBBCH_63 = cumulTTFromBBCH_63;
@@ -363,6 +370,10 @@ namespace PhenologyMaizeCrop2ML.Strategies
                 s.isMomentRegistredBBCH_1n = isMomentRegistredBBCH_1n;
 
             }
+
+            s.calendarMoments = calendarMoments_t ;
+            s.calendarCumuls = calendarCumuls_t ;
+            s.calendarDates = calendarDates_t ;
         }
     }
 }

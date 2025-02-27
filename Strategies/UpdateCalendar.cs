@@ -281,50 +281,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
                 throw new Exception(msg, exception);
             }
         }
-        public String PreviousMoment(PhenologyMaizeCrop2MLState s)
-        {
-            if (s.phase < 0)
-            {
-                return "Unknown";
-            }
-            else if (s.phase >= 0 && s.phase< 1)//SowingToEmergence
-            {
-                return "Sowing";
-            }
-            else if (s.phase >= 1 && s.phase < 2)//EmergenceToFloralInitiation
-            {
-                return "Emergence";
-            }
-            else if (s.phase >= 2 && s.phase < 3)//FloralInitiationToAnthesis
-            {
-                return "FloralInitiation";
-            }
-            else if (s.phase >= 3 && s.phase< 4)//FloralInitiationToAnthesis
-            {
-                return "PanicleVisible";
-            }
-            else if (s.phase == 4)//AnthesisToEndCellDivision
-            {
-                return "Anthesis";
-            }
-            else if (s.phase == 4.5)//EndCellDivisionToEndGrainFill
-            {
-                return "EndCellDivision";
-            }
-            else if (s.phase >= 5 && s.phase< 6)//EndGrainFillToMaturity
-            {
-                return "Maturity";
-            }
-            else if (s.phase >= 6 && s.phase< 7)//AllOver
-            {
-                return "Maturity";
-            }
-            else
-            {
-                throw new InvalidOperationException();
-            }
 
-        }
         private void CalculateModel(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
         {
             //modele unitaire rajouté pour avoir un modèle composite avec juste une pile d'appel

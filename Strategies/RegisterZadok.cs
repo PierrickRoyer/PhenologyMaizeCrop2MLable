@@ -602,10 +602,27 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			//GENERATED CODE END - PLACE YOUR CUSTOM CODE BELOW - Section1
 			//Code written below will not be overwritten by a future code generation
 
+			
+
+
+			DateTime currentdate = s.currentdate;
+			double cumulTT6 = s.cumulTT[6];
+			double LeafNumber = s.LeafNumber;
+			List<string> calendarMoments_t1 = s1.calendarMoments;
+			List<DateTime> calendarDates_t1 = s1.calendarDates;
+			List<double> calendarCumuls_t1 = s1.calendarCumuls;
+			int IsLatestLeafInternodeLengthPotPositive = s.IsLatestLeafInternodeLengthPotPositive;
+			int hasSilkingStarted = s.hasSilkingStarted;
+
+			List<string> calendarMoments_t = s.calendarMoments;
+			List<DateTime> calendarDates_t = s.calendarDates;
+			List<double> calendarCumuls_t = s.calendarCumuls;
+			string currentBBCHStage;
+			int hasBBCHStageChanged;
+
+
 			int roundedFinalLeafNumber = (int)(Nfinal + 0.5);
-			List<string> calendarMoments = s1.calendarMoments;
-			List<DateTime> calendarDates = s1.calendarDates;
-			List<double> calendarCumuls = s1.calendarCumuls;
+
 
 			//if (HasReachedHaun(4, s.LeafNumber) && !(s1.Calendar[GrowthStage.ZC_21_MainShootPlus1Tiller].HasValue))
 			//{
@@ -625,13 +642,13 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			//s.currentBBCHStage = GrowthStage.ZC_23_MainShootPlus3Tiller;
 			//s.hasBBCHStageChanged = 1;
 			//}
-			if (s.IsLatestLeafInternodeLengthPotPositive == 1 && !(calendarMoments.Contains("BeginningStemExtension")))
+			if (IsLatestLeafInternodeLengthPotPositive == 1 && !(calendarMoments_t1.Contains("BeginningStemExtension")))
 			{
-				s.calendarMoments.Add("BeginningStemExtension");
-				s.calendarDates.Add(s.currentdate);
-				s.calendarCumuls.Add(s.cumulTT[6]);
-				s.currentBBCHStage = "BeginningStemExtension";
-				s.hasBBCHStageChanged = 1;
+				calendarMoments_t.Add("BeginningStemExtension");
+				calendarDates_t.Add(currentdate);
+				calendarCumuls_t.Add(cumulTT6);
+				currentBBCHStage = "BeginningStemExtension";
+				hasBBCHStageChanged = 1;
 
 			}
 			//else if (Nfinal > 0 && HasReachedHaun(slopeTSFLN * Nfinal - intTSFLN, s.LeafNumber) && !(s1.Calendar[GrowthStage.TerminalSpikelet].HasValue))
@@ -640,29 +657,29 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			//s.currentBBCHStage = GrowthStage.TerminalSpikelet;
 			//s.hasBBCHStageChanged = 1;
 			//}
-			else if (HasReachedFlagLeaf(4, roundedFinalLeafNumber, s.LeafNumber) && !(calendarMoments.Contains("PseudoStemElongation")))
+			else if (HasReachedFlagLeaf(4, roundedFinalLeafNumber, LeafNumber) && !(calendarMoments_t1.Contains("PseudoStemElongation")))
 			{
-				s.calendarMoments.Add("PseudoStemElongation");
-				s.calendarDates.Add(s.currentdate);
-				s.calendarCumuls.Add(s.cumulTT[6]);
-				s.currentBBCHStage = "PseudoStemElongation";
-				s.hasBBCHStageChanged = 1;
+				calendarMoments_t.Add("PseudoStemElongation");
+				calendarDates_t.Add(currentdate);
+				calendarCumuls_t.Add(cumulTT6);
+				currentBBCHStage = "PseudoStemElongation";
+				hasBBCHStageChanged = 1;
 			}
-			else if (HasReachedFlagLeaf(3, roundedFinalLeafNumber, s.LeafNumber) && !(calendarMoments.Contains("1stNodeDetectable")))
+			else if (HasReachedFlagLeaf(3, roundedFinalLeafNumber, LeafNumber) && !(calendarMoments_t1.Contains("1stNodeDetectable")))
 			{
-				s.calendarMoments.Add("1stNodeDetectable");
-				s.calendarDates.Add(s.currentdate);
-				s.calendarCumuls.Add(s.cumulTT[6]);
-				s.currentBBCHStage = "1stNodeDetectable";
-				s.hasBBCHStageChanged = 1;
+				calendarMoments_t.Add("1stNodeDetectable");
+				calendarDates_t.Add(currentdate);
+				calendarCumuls_t.Add(cumulTT6);
+				currentBBCHStage = "1stNodeDetectable";
+				hasBBCHStageChanged = 1;
 			}
-			else if (HasReachedFlagLeaf(2, roundedFinalLeafNumber, s.LeafNumber) && !(calendarMoments.Contains("2ndNodeDetectable")))
+			else if (HasReachedFlagLeaf(2, roundedFinalLeafNumber, LeafNumber) && !(calendarMoments_t1.Contains("2ndNodeDetectable")))
 			{
-				s.calendarMoments.Add("2ndNodeDetectable");
-				s.calendarDates.Add(s.currentdate);
-				s.calendarCumuls.Add(s.cumulTT[6]);
-				s.currentBBCHStage = "2ndNodeDetectable";
-				s.hasBBCHStageChanged = 1;
+				calendarMoments_t.Add("2ndNodeDetectable");
+				calendarDates_t.Add(currentdate);
+				calendarCumuls_t.Add(cumulTT6);
+				currentBBCHStage = "2ndNodeDetectable";
+				hasBBCHStageChanged = 1;
 			}
 			//else if (HasReachedFlagLeaf(1, roundedFinalLeafNumber, phenologymaizestate.LeafNumber) && !(phenologymaizestate1.Calendar[GrowthStage.ZC_37_FlagLeafJustVisible].HasValue))
 			//{
@@ -697,25 +714,28 @@ namespace PhenologyMaizeCrop2ML.Strategies
             phenologymaizestate.currentBBCHStage = GrowthStageMaize.BBCH_83_MidGrainFilling;
             phenologymaizestate.hasBBCHStageChanged = 1;
             }*/
-			else if (s.hasSilkingStarted == 1 && !(calendarMoments.Contains("Silking")))
+			else if (hasSilkingStarted == 1 && !(calendarMoments_t1.Contains("Silking")))
 			{
-				s.calendarMoments.Add("Silking");
-				s.calendarDates.Add(s.currentdate);
-				s.calendarCumuls.Add(s.cumulTT[6]);
-				s.currentBBCHStage = "Silking";
-				s.hasBBCHStageChanged = 1;
+				calendarMoments_t.Add("Silking");
+				calendarDates_t.Add(currentdate);
+				calendarCumuls_t.Add(cumulTT6);
+				currentBBCHStage = "Silking";
+				hasBBCHStageChanged = 1;
 			}
 			else
 			{
-				s.hasBBCHStageChanged = 0;
-				s.calendarMoments = s1.calendarMoments;
-				s.calendarDates = s1.calendarDates;
-				s.calendarCumuls = s1.calendarCumuls;
+				hasBBCHStageChanged = 0;
+				calendarMoments_t = calendarMoments_t1;
+				calendarDates_t = calendarDates_t1;
+				calendarCumuls_t = calendarCumuls_t1;
 			}
 
+			s.calendarMoments = calendarMoments_t;
+			s.calendarDates = calendarDates_t  ;
+			s.calendarCumuls = calendarCumuls_t  ;
 
-			//End of custom code. Do not place your custom code below. It will be overwritten by a future code generation.
-			//PLACE YOUR CUSTOM CODE ABOVE - GENERATED CODE START - Section1 
+			s.currentBBCHStage = currentBBCHStage;
+			s.hasBBCHStageChanged = hasBBCHStageChanged;
 		}
 
 
