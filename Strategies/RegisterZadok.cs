@@ -611,18 +611,19 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			List<string> calendarMoments_t1 = s1.calendarMoments;
 			List<DateTime> calendarDates_t1 = s1.calendarDates;
 			List<double> calendarCumuls_t1 = s1.calendarCumuls;
+
+			List<string> calendarMoments = s.calendarMoments;
+			List<DateTime> calendarDates = s.calendarDates;
+			List<double> calendarCumuls = s.calendarCumuls;
+
+
 			int IsLatestLeafInternodeLengthPotPositive = s.IsLatestLeafInternodeLengthPotPositive;
 			int hasSilkingStarted = s.hasSilkingStarted;
 
-			List<string> calendarMoments_t = new List<string>();
-			List<DateTime> calendarDates_t = new List<DateTime>();
-			List<double> calendarCumuls_t = new List<double>();
 
-			calendarMoments_t = new List<string>(s.calendarMoments);
-			calendarCumuls_t = new List<double>(s.calendarCumuls);
-			calendarDates_t = new List<DateTime>(s.calendarDates);
-			string currentBBCHStage;
-			int hasBBCHStageChanged;
+
+			string currentBBCHStage = s.currentBBCHStage;
+			int hasBBCHStageChanged = s.hasBBCHStageChanged;
 
 
 			int roundedFinalLeafNumber = (int)(Nfinal + 0.5);
@@ -648,9 +649,9 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			//}
 			if (IsLatestLeafInternodeLengthPotPositive == 1 && !(calendarMoments_t1.Contains("BeginningStemExtension")))
 			{
-				calendarMoments_t.Add("BeginningStemExtension");
-				calendarDates_t.Add(currentdate);
-				calendarCumuls_t.Add(cumulTT6);
+				calendarMoments.Add("BeginningStemExtension");
+				calendarDates.Add(currentdate);
+				calendarCumuls.Add(cumulTT6);
 				currentBBCHStage = "BeginningStemExtension";
 				hasBBCHStageChanged = 1;
 
@@ -663,25 +664,25 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			//}
 			else if (HasReachedFlagLeaf(4, roundedFinalLeafNumber, LeafNumber) && !(calendarMoments_t1.Contains("PseudoStemElongation")))
 			{
-				calendarMoments_t.Add("PseudoStemElongation");
-				calendarDates_t.Add(currentdate);
-				calendarCumuls_t.Add(cumulTT6);
+				calendarMoments.Add("PseudoStemElongation");
+				calendarDates.Add(currentdate);
+				calendarCumuls.Add(cumulTT6);
 				currentBBCHStage = "PseudoStemElongation";
 				hasBBCHStageChanged = 1;
 			}
 			else if (HasReachedFlagLeaf(3, roundedFinalLeafNumber, LeafNumber) && !(calendarMoments_t1.Contains("1stNodeDetectable")))
 			{
-				calendarMoments_t.Add("1stNodeDetectable");
-				calendarDates_t.Add(currentdate);
-				calendarCumuls_t.Add(cumulTT6);
+				calendarMoments.Add("1stNodeDetectable");
+				calendarDates.Add(currentdate);
+				calendarCumuls.Add(cumulTT6);
 				currentBBCHStage = "1stNodeDetectable";
 				hasBBCHStageChanged = 1;
 			}
 			else if (HasReachedFlagLeaf(2, roundedFinalLeafNumber, LeafNumber) && !(calendarMoments_t1.Contains("2ndNodeDetectable")))
 			{
-				calendarMoments_t.Add("2ndNodeDetectable");
-				calendarDates_t.Add(currentdate);
-				calendarCumuls_t.Add(cumulTT6);
+				calendarMoments.Add("2ndNodeDetectable");
+				calendarDates.Add(currentdate);
+				calendarCumuls.Add(cumulTT6);
 				currentBBCHStage = "2ndNodeDetectable";
 				hasBBCHStageChanged = 1;
 			}
@@ -720,23 +721,23 @@ namespace PhenologyMaizeCrop2ML.Strategies
             }*/
 			else if (hasSilkingStarted == 1 && !(calendarMoments_t1.Contains("Silking")))
 			{
-				calendarMoments_t.Add("Silking");
-				calendarDates_t.Add(currentdate);
-				calendarCumuls_t.Add(cumulTT6);
+				calendarMoments.Add("Silking");
+				calendarDates.Add(currentdate);
+				calendarCumuls.Add(cumulTT6);
 				currentBBCHStage = "Silking";
 				hasBBCHStageChanged = 1;
 			}
 			else
 			{
 				hasBBCHStageChanged = 0;
-				calendarMoments_t = calendarMoments_t1;
-				calendarDates_t = calendarDates_t1;
-				calendarCumuls_t = calendarCumuls_t1;
+				calendarMoments = calendarMoments_t1;
+				calendarDates = calendarDates_t1;
+				calendarCumuls = calendarCumuls_t1;
 			}
 
-			s.calendarMoments = calendarMoments_t;
-			s.calendarDates = calendarDates_t  ;
-			s.calendarCumuls = calendarCumuls_t  ;
+			s.calendarMoments = calendarMoments;
+			s.calendarDates = calendarDates  ;
+			s.calendarCumuls = calendarCumuls;
 
 			s.currentBBCHStage = currentBBCHStage;
 			s.hasBBCHStageChanged = hasBBCHStageChanged;

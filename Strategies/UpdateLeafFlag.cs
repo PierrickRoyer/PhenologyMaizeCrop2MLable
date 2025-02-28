@@ -424,26 +424,26 @@ namespace PhenologyMaizeCrop2ML.Strategies
 		private void CalculateModel(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
 		{
 
-			string currentBBCHStage;
-			int hasBBCHStageChanged;
+			string currentBBCHStage_t = s.currentBBCHStage;
+			int hasBBCHStageChanged_t = s.hasBBCHStageChanged;
 
 			double Ntip = s.Ntip;
 			double LNlig = s.LNlig;
 			DateTime currentdate = s.currentdate;
 			double LeafNumber = s.LeafNumber;
 			double cumulTT6 = s.cumulTT[6];
-			List<string> s_calendarMoments = s.calendarMoments;
-			List<DateTime> s_calendarDates = s.calendarDates;
-			List<double> s_calendarCumuls = s.calendarCumuls;
+			List<string> calendarMoments = s.calendarMoments;
+			List<DateTime> calendarDates = s.calendarDates;
+			List<double> calendarCumuls = s.calendarCumuls;
 
-			List<string> s1_calendarMoments = s1.calendarMoments;
-			List<DateTime> s1_calendarDates = s1.calendarDates;
-			List<double> s1_calendarCumuls = s1.calendarCumuls;
+			List<string> calendarMoments_t1 = s1.calendarMoments;
+			List<DateTime> calendarDates_t1 = s1.calendarDates;
+			List<double> calendarCumuls_t1 = s1.calendarCumuls;
 
-			int hasFlagLeafAppeared_t;
+			int hasFlagLeafAppeared_t = s.hasFlagLeafAppeared;
 			int hasFlagLeafAppeared_t1 = s1.hasFlagLeafAppeared;
 
-			int HasFlagLeafLiguleAppeared_t;
+			int HasFlagLeafLiguleAppeared_t = s.HasFlagLeafLiguleAppeared;
 			int HasFlagLeafLiguleAppeared_t1 = s1.HasFlagLeafLiguleAppeared;
 
 
@@ -464,24 +464,24 @@ namespace PhenologyMaizeCrop2ML.Strategies
 							s.hasBBCHStageChanged = 1;
 						}*/
 						//Pierrick's Code for Crop2ML traduction
-						if (!s1_calendarMoments.Contains("LastLeafVisible"))
+						if (!calendarMoments_t1.Contains("LastLeafVisible"))
 						{
 
-							s_calendarMoments.Add("LastLeafVisible");
-							s_calendarDates.Add(currentdate);
-							s_calendarCumuls.Add(cumulTT6);
+							calendarMoments.Add("LastLeafVisible");
+							calendarDates.Add(currentdate);
+							calendarCumuls.Add(cumulTT6);
 
-							currentBBCHStage = "LastLeafVisible";
-							hasBBCHStageChanged = 1;
+							currentBBCHStage_t = "LastLeafVisible";
+							hasBBCHStageChanged_t = 1;
 						}
 
 					}
 					else
 					{
 						hasFlagLeafAppeared_t = hasFlagLeafAppeared_t1;
-						s_calendarMoments = s1_calendarMoments;
-						s_calendarDates = s1_calendarDates;
-						s_calendarCumuls = s1_calendarCumuls;
+						calendarMoments = calendarMoments_t1;
+						calendarDates = calendarDates_t1;
+						calendarCumuls = calendarCumuls_t1;
 					}
 					if (HasFlagLeafLiguleAppeared_t1 == 0 && (Nfinal > 0 && LNlig == (int)(Nfinal + 0.5)))
 					{
@@ -492,24 +492,24 @@ namespace PhenologyMaizeCrop2ML.Strategies
 												s.currentBBCHStage = GrowthStageMaize.BBCH_1n_FlagLeafLiguleJustVisible;
 												s.hasBBCHStageChanged = 1;
 											}*/
-						if (!s1_calendarMoments.Contains("FlagLeafLiguleJustVisible"))
+						if (!calendarMoments_t1.Contains("FlagLeafLiguleJustVisible"))
 						{
 
-							s_calendarMoments.Add("FlagLeafLiguleJustVisible");
-							s_calendarDates.Add(currentdate);
-							s_calendarCumuls.Add(cumulTT6);
+							calendarMoments.Add("FlagLeafLiguleJustVisible");
+							calendarDates.Add(currentdate);
+							calendarCumuls.Add(cumulTT6);
 
-							currentBBCHStage = "FlagLeafLiguleJustVisible";
-							hasBBCHStageChanged = 1;
+							currentBBCHStage_t = "FlagLeafLiguleJustVisible";
+							hasBBCHStageChanged_t = 1;
 						}
 
 					}
 					else
 					{
 						HasFlagLeafLiguleAppeared_t = HasFlagLeafLiguleAppeared_t1;
-						s_calendarMoments = s1_calendarMoments;
-						s_calendarDates = s1_calendarDates;
-						s_calendarCumuls = s1_calendarCumuls;
+						calendarMoments = calendarMoments_t1;
+						calendarDates = calendarDates_t1;
+						calendarCumuls = calendarCumuls_t1;
 					}
 
 
@@ -522,15 +522,15 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			}
 
 
-			s.calendarMoments = s_calendarMoments;
-			s.calendarDates = s_calendarDates;
-			s.calendarCumuls = s_calendarCumuls;
+			s.calendarMoments = calendarMoments;
+			s.calendarDates = calendarDates;
+			s.calendarCumuls = calendarCumuls;
 
 			s.HasFlagLeafLiguleAppeared = HasFlagLeafLiguleAppeared_t;
 			s.hasFlagLeafAppeared = hasFlagLeafAppeared_t;
 
-			s.currentBBCHStage = currentBBCHStage;
-			s.hasBBCHStageChanged = hasBBCHStageChanged;
+			s.currentBBCHStage = currentBBCHStage_t;
+			s.hasBBCHStageChanged = hasBBCHStageChanged_t;
 		}
 
 		#endregion

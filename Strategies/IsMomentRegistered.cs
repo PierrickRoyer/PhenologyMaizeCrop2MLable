@@ -328,13 +328,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
             double cumulTTFromLastLeaf;
             int isMomentRegistredBBCH_1n;
 
-            List<string> calendarMoments_t = new List<string>();
-            List<DateTime> calendarDates_t = new List<DateTime>();
-            List<double> calendarCumuls_t = new List<double>();
 
-            calendarMoments_t = new List<string>(calendarMoments_t1);
-            calendarCumuls_t = new List<double>(calendarCumuls_t1);
-            calendarDates_t = new List<DateTime>(calendarDates_t1);
             if (cumulTT6 > 0)
             {
                
@@ -371,9 +365,6 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
             }
 
-            s.calendarMoments = calendarMoments_t ;
-            s.calendarCumuls = calendarCumuls_t ;
-            s.calendarDates = calendarDates_t ;
         }
     }
 }
