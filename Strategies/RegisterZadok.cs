@@ -614,9 +614,13 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			int IsLatestLeafInternodeLengthPotPositive = s.IsLatestLeafInternodeLengthPotPositive;
 			int hasSilkingStarted = s.hasSilkingStarted;
 
-			List<string> calendarMoments_t = s.calendarMoments;
-			List<DateTime> calendarDates_t = s.calendarDates;
-			List<double> calendarCumuls_t = s.calendarCumuls;
+			List<string> calendarMoments_t = new List<string>();
+			List<DateTime> calendarDates_t = new List<DateTime>();
+			List<double> calendarCumuls_t = new List<double>();
+
+			calendarMoments_t = new List<string>(s.calendarMoments);
+			calendarCumuls_t = new List<double>(s.calendarCumuls);
+			calendarDates_t = new List<DateTime>(s.calendarDates);
 			string currentBBCHStage;
 			int hasBBCHStageChanged;
 

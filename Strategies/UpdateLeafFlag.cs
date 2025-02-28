@@ -439,6 +439,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			List<string> s1_calendarMoments = s1.calendarMoments;
 			List<DateTime> s1_calendarDates = s1.calendarDates;
 			List<double> s1_calendarCumuls = s1.calendarCumuls;
+
 			int hasFlagLeafAppeared_t;
 			int hasFlagLeafAppeared_t1 = s1.hasFlagLeafAppeared;
 
