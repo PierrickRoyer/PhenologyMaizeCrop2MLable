@@ -1091,7 +1091,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 		private void CalculateModel(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
 		{
-			double phase_t = s.phase;
+			double phase = s.phase;
 			int HasFlagLeafLiguleAppeared = s.HasFlagLeafLiguleAppeared;
 			int AllTTLeavesCalculated_t1 = s1.AllTTLeavesCalculated;
 			double LeafNumber_t1 = s1.LeafNumber;
@@ -1109,16 +1109,16 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			List<double> fullyExpTT_t1 = s1.fullyExpTT;
 
 
-			List<double> startExpTT_t= new List<double>();
-			List<double> liguleTT_t = new List<double>();
-			List<double> tipTT_t = new List<double>();
-			List<double> fullyExpTT_t = new List<double>();
+			List<double> startExpTT= new List<double>();
+			List<double> liguleTT = new List<double>();
+			List<double> tipTT = new List<double>();
+			List<double> fullyExpTT = new List<double>();
 
-			int AllTTLeavesCalculated_t;
-			double Ntip_t;
-			double LeafNumber_t;
-			double LNlig_t;
-			double LNfullyexp_t ;
+			int AllTTLeavesCalculated;
+			double Ntip = s.Ntip;
+			double LeafNumber;
+			double LNlig;
+			double LNfullyexp ;
 
 			//GENERATED CODE END - PLACE YOUR CUSTOM CODE BELOW - Section1
 			//Code written below will not be overwritten by a future code generation
@@ -1133,21 +1133,21 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			//         }
 			//double AnthTTnoStress = phyltip * Nfinal + btip + phyltip /*+ phenologymaizestate.cumulTTPhenoMaizeAtEmergence*/;
 
-			if (phase_t >= 1 && phase_t < 4) { 
+			if (phase >= 1 && phase < 4) { 
 				double AnthTTnoStress = phyltip * (int)(Nfinal + 0.5) + btip + phyltip /*+ phenologymaizestate.cumulTTPhenoMaizeAtEmergence*/;
 
 				int roundedFinalLeafNumber = (int)(Nfinal + 0.5);//
 																	//Nfinal;// (int) (Nfinal+0.5);
 
 			
-				for (int i = 0; i < startExpTT_t1.Count; i++)startExpTT_t.Add(startExpTT_t1[i]);
+				for (int i = 0; i < startExpTT_t1.Count; i++)startExpTT.Add(startExpTT_t1[i]);
 
-				for (int i = 0; i < liguleTT_t1.Count; i++) liguleTT_t.Add(liguleTT_t1[i]);
+				for (int i = 0; i < liguleTT_t1.Count; i++) liguleTT.Add(liguleTT_t1[i]);
 
 				
-				for (int i = 0; i < tipTT_t1.Count; i++) tipTT_t.Add(tipTT_t1[i]);
+				for (int i = 0; i < tipTT_t1.Count; i++) tipTT.Add(tipTT_t1[i]);
 
-				for (int i = 0; i < fullyExpTT_t1.Count; i++) fullyExpTT_t.Add(fullyExpTT_t1[i]);
+				for (int i = 0; i < fullyExpTT_t1.Count; i++) fullyExpTT.Add(fullyExpTT_t1[i]);
 
 
 				double Nlimll = alpha_tr * roundedFinalLeafNumber;
@@ -1162,10 +1162,10 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 						if (LeafNumber_t1 < Ntip0)
 						{
-							startExpTT_t.Add(/*phenologymaizestate.cumulTTPhenoMaizeAtEmergence*/0.0);//be careful! if the equations need to be modified you need to do it here and below (from the line 1224)
-							liguleTT_t.Add(a_ll1 + /*phenologymaizestate.cumulTTPhenoMaizeAtEmergence +*/ b_ll1);
-							tipTT_t.Add(/*phenologymaizestate.cumulTTPhenoMaizeAtEmergence*/0.0);
-							fullyExpTT_t.Add(Math.Max(0.0, a_ll1 /*+ phenologymaizestate.cumulTTPhenoMaizeAtEmergence*/ + b_ll1 - Lagmax));
+							startExpTT.Add(/*phenologymaizestate.cumulTTPhenoMaizeAtEmergence*/0.0);//be careful! if the equations need to be modified you need to do it here and below (from the line 1224)
+							liguleTT.Add(a_ll1 + /*phenologymaizestate.cumulTTPhenoMaizeAtEmergence +*/ b_ll1);
+							tipTT.Add(/*phenologymaizestate.cumulTTPhenoMaizeAtEmergence*/0.0);
+							fullyExpTT.Add(Math.Max(0.0, a_ll1 /*+ phenologymaizestate.cumulTTPhenoMaizeAtEmergence*/ + b_ll1 - Lagmax));
 						}
 
 
@@ -1221,19 +1221,19 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 							}
 							if (nextStopExpTT > AnthTTnoStress) nextStopExpTT = AnthTTnoStress;
-							if (nextTipTT > 0) tipTT_t.Add(nextTipTT);
+							if (nextTipTT > 0) tipTT.Add(nextTipTT);
 							else
 							{
-								tipTT_t.Add(0.0d);
+								tipTT.Add(0.0d);
 /*								if (i > 3) throw new Exception("A tip of a leaf with rank >3 (rank " + i + ") appears at emergence: Your leaf apparence parametrization is not coherent," +
 										 " the absolute value of the Intercept of the regression of thermal time " +
 										 "with tip appearance (btip) might be too large or the value of" +
 										 " others parameters relatively to low");*/
 							}
-							if (nextStartExpTT > 0) startExpTT_t.Add(nextStartExpTT);
+							if (nextStartExpTT > 0) startExpTT.Add(nextStartExpTT);
 							else
 							{
-								startExpTT_t.Add(0.0d);
+								startExpTT.Add(0.0d);
 							/*	if (i > 3) throw new Exception("A leaf with rank >3 (rank " + i + ") starts to expand at emergence: Your leaf apparence parametrization is not coherent," +
 								 " the absolute value of the Intercept of the regression of thermal time " +
 								 "with tip appearance (btip) might be too large or the value of" +
@@ -1241,7 +1241,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 
 							}
-							if (nextLigTT1 > 0) liguleTT_t.Add(nextLigTT1);
+							if (nextLigTT1 > 0) liguleTT.Add(nextLigTT1);
 						/*	else
 							{
 *//*
@@ -1250,7 +1250,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 								"with tip appearance (btip) might be too large or the value of" +
 							   " others parameters relatively to low");*//*
 							}*/
-							if (nextStopExpTT > 0) fullyExpTT_t.Add(nextStopExpTT);
+							if (nextStopExpTT > 0) fullyExpTT.Add(nextStopExpTT);
 /*							else
 							{
 								throw new Exception("A leaf with rank" + i + " is fully expanded at emergence: Your leaf apparence parametrization is not coherent," +
@@ -1260,7 +1260,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 							}*/
 
 						}
-						AllTTLeavesCalculated_t = 1;
+						AllTTLeavesCalculated = 1;
 
 					}
 					else
@@ -1269,8 +1269,8 @@ namespace PhenologyMaizeCrop2ML.Strategies
 						if (Ntip_t1 < roundedFinalLeafNumber)
 						{
 							int TipNb = Convert.ToInt32(Ntip_t1 + 1);
-							if (cumulTT6 - cumulTTPhenoMaizeAtEmergence /*- btip*/ >= tipTT_t[TipNb - 1]) Ntip_t = Ntip_t1 + 1;
-							else Ntip_t = Ntip_t1;
+							if (cumulTT6 - cumulTTPhenoMaizeAtEmergence /*- btip*/ >= tipTT[TipNb - 1]) Ntip = Ntip_t1 + 1;
+							else Ntip = Ntip_t1;
 						}
 
 
@@ -1278,12 +1278,12 @@ namespace PhenologyMaizeCrop2ML.Strategies
 						if (LeafNumber_t1 < roundedFinalLeafNumber)
 						{
 							int LeafNb = Convert.ToInt32(LeafNumber_t1 + 1);
-							if (cumulTT6 - cumulTTPhenoMaizeAtEmergence /*- btip*/ >= startExpTT_t[LeafNb - 1])
+							if (cumulTT6 - cumulTTPhenoMaizeAtEmergence /*- btip*/ >= startExpTT[LeafNb - 1])
 							{
-								LeafNumber_t = LeafNumber_t1 + 1;
+								LeafNumber = LeafNumber_t1 + 1;
 
 							}
-							else LeafNumber_t = LeafNumber_t1;
+							else LeafNumber = LeafNumber_t1;
 						}
 
 
@@ -1291,11 +1291,11 @@ namespace PhenologyMaizeCrop2ML.Strategies
 						if (LNlig_t1 < roundedFinalLeafNumber)
 						{
 							int LigNb = Convert.ToInt32(LNlig_t1 + 1);
-							if (cumulTT6 - cumulTTPhenoMaizeAtEmergence /*- btip*/ >= liguleTT_t[LigNb - 1])
+							if (cumulTT6 - cumulTTPhenoMaizeAtEmergence /*- btip*/ >= liguleTT[LigNb - 1])
 							{
-								LNlig_t = LNlig_t1 + 1;
+								LNlig = LNlig_t1 + 1;
 							}
-							else LNlig_t = LNlig_t1;
+							else LNlig = LNlig_t1;
 						}
 
 
@@ -1303,11 +1303,11 @@ namespace PhenologyMaizeCrop2ML.Strategies
 						if (LNfullyexp_t1 < roundedFinalLeafNumber)
 						{
 							int FullyExpNb = Convert.ToInt32(LNfullyexp_t1 + 1);
-							if (cumulTT6 - cumulTTPhenoMaizeAtEmergence /*- btip*/  >= fullyExpTT_t[FullyExpNb - 1])
+							if (cumulTT6 - cumulTTPhenoMaizeAtEmergence /*- btip*/  >= fullyExpTT[FullyExpNb - 1])
 							{
-								LNfullyexp_t = LNfullyexp_t1 + 1;
+								LNfullyexp = LNfullyexp_t1 + 1;
 							}
-							else LNfullyexp_t = LNfullyexp_t1;
+							else LNfullyexp = LNfullyexp_t1;
 						}
 
 
@@ -1315,17 +1315,17 @@ namespace PhenologyMaizeCrop2ML.Strategies
 				}
 
 
-				s.AllTTLeavesCalculated = AllTTLeavesCalculated_t;
-				s.Ntip =  Ntip_t;
-				s.LeafNumber = LeafNumber_t;
-				s.LNlig = LNlig_t;
-				s.LNfullyexp = LNfullyexp_t;
+				s.AllTTLeavesCalculated = AllTTLeavesCalculated;
+				s.Ntip =  Ntip;
+				s.LeafNumber = LeafNumber;
+				s.LNlig = LNlig;
+				s.LNfullyexp = LNfullyexp;
 				
 				
-				s.startExpTT = startExpTT_t;
-				s.liguleTT = liguleTT_t;
-				s.tipTT = tipTT_t;
-				s.fullyExpTT = fullyExpTT_t;
+				s.startExpTT = startExpTT;
+				s.liguleTT = liguleTT;
+				s.tipTT = tipTT;
+				s.fullyExpTT = fullyExpTT;
 
 
 

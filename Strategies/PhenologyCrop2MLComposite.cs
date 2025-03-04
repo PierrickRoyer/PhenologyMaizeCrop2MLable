@@ -1110,6 +1110,17 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 		}
 
+		public void Init(PhenologyState s, PhenologyState s1, PhenologyRate r, PhenologyAuxiliary a, PhenologyExogenous ex)
+		{
+			s.cumulTTFromBBCH_63 = -999.0;
+			s.cumulTTFromBBCH_1n = -999.0;
+			s.cumulTTFromLastLeaf = -999.0;
+			s.cumulTTPhenoMaizeAtEmergence = -999;
+			s.isMomentRegistredBBCH_1n = 0;
+			s.hasFlagLeafAppeared = 0;
+			s.hasGerminationHappened = 0;
+		}
+
 
 	}
 }

@@ -1178,7 +1178,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 			double cumulTT6 = s.cumulTT[6];
 			int StopAtHarvest = s.StopAtHarvest;
-			DateTime currentDate = s.currentDate;
+			DateTime currentdate = s.currentdate;
 			DateTime HarvestDate = s.HarvestDate;
 			double phase_t1 = s1.phase;
 			int hasGerminationHappened = s.hasGerminationHappened;
@@ -1196,14 +1196,14 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			double TTFromLastLeafToSilk = ttFromLastLeafToAnthesis + ASIbase * (1 + LERc * waterStressCoeffSilk * (-waterPot));
 
 
-			int StopAtHarvestDate;
-			double cumulTTPhenoMaizeAtEmergence = 0.0d;
-			double phase_t = 0.0d;
-			int hasLastPrimordiumAppeared;
-			int transition_lig_t1;
-			int hasSilkingStarted;
+			int StopAtHarvestDate = s.StopAtHarvestDate;
+			double cumulTTPhenoMaizeAtEmergence = s.cumulTTPhenoMaizeAtEmergence;
+			double phase =s.phase;
+			int hasLastPrimordiumAppeared = s.hasLastPrimordiumAppeared;
+			int transition_lig_t1 = s.transition_lig_t1;
+			int hasSilkingStarted = s.hasSilkingStarted;
 
-			if (( StopAtHarvest == 1 ) && (currentDate == HarvestDate ) ) StopAtHarvestDate = 1;
+			if (( StopAtHarvest == 1 ) && (currentdate == HarvestDate ) ) StopAtHarvestDate = 1;
             else StopAtHarvestDate = 0;
 
 		
@@ -1229,17 +1229,17 @@ namespace PhenologyMaizeCrop2ML.Strategies
 						if (cumulTT6 >= TTemergence)                                                                      //attention: changer cumulTT[6] avec le bon cumulTT pour le sol
 						{
 							//Console.WriteLine("**" + phenologymaizestate.cumulTTSoil + " " + phenologymaizestate.TTemergence);
-							phase_t = 1;//Emergence
+							phase = 1;//Emergence
 							cumulTTPhenoMaizeAtEmergence = cumulTT6;
 						}
 						else
 						{
-							phase_t = phase_t1;
+							phase = phase_t1;
 						}
 					}
 					else
 						{
-					phase_t = phase_t1;
+					phase = phase_t1;
 						}
 
 				}
@@ -1252,7 +1252,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 					//CheckFloralInitiation
 					if (hasLastPrimordiumAppeared == 1)
 					{
-						phase_t = 2;//Floralinitiation  
+						phase = 2;//Floralinitiation  
 					}
 
 					if (Ntip >= (int)(Nfinal + 0.5) - NFSilkingInit) transition_lig_t1 = 1;
@@ -1272,7 +1272,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 						if (cumulTTFromLastLeaf >= ttFromLastLeafToAnthesis)// phenologymaizestate.cumulTTFromBBCH_1n
 						{
-							phase_t = 4;//Anthesis
+							phase = 4;//Anthesis
 
 
 		//What Lucille Did :
@@ -1297,7 +1297,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 						}
 						else
 						{
-							phase_t = phase_t1;
+							phase = phase_t1;
 					}
 
 						if (cumulTTFromLastLeaf >= TTFromLastLeafToSilk)// silking
@@ -1308,7 +1308,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 					}
 					else
 					{
-					phase_t = phase_t1;
+					phase = phase_t1;
 				}
 				}
 				else if (phase_t1 == 4)//AnthesisToEndCellDivision
@@ -1322,11 +1322,11 @@ namespace PhenologyMaizeCrop2ML.Strategies
 					//CheckEndCellDivision
 					if (cumulTTFromLastLeaf >= TTFromLastLeafToSilk + AbortLimitTT || StopAtHarvestDate == 1)
 					{
-						phase_t = 4.5;//EndCellDivision
+						phase = 4.5;//EndCellDivision
 					}
 					else
 					{
-						phase_t = phase_t1;
+						phase = phase_t1;
 					}
 				}
 				else if (phase_t1 == 4.5)//EndCellDivisionToEndGrainFill
@@ -1334,11 +1334,11 @@ namespace PhenologyMaizeCrop2ML.Strategies
 					// CheckEndGrainFilling
 					if (GrainCumulTT >= Dgf || GAI <= 0 || StopAtHarvestDate == 1)
 					{
-						phase_t = 5;//End of grain filling
+						phase = 5;//End of grain filling
 					}
 					else
 					{
-						phase_t = phase_t1;
+						phase = phase_t1;
 					}
 				}
 				else if (phase_t1 >= 5 && phase_t1 < 6)//EndGrainFillToMaturity
@@ -1350,7 +1350,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 				//if (phenologymaizestate.cumulTTFromBBCH_85 >= LocalDegfm)
 				//{
-					phase_t = 6; //maturity
+					phase = 6; //maturity
 															   //}
 															   //else
 															   //{
@@ -1359,7 +1359,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 				}
 				else if (phase_t1 >= 6 && phase_t1 < 7)
 				{
-					phase_t = phase_t1;
+					phase = phase_t1;
 
 				}
 			/*				else
@@ -1374,7 +1374,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 			s.StopAtHarvestDate =  StopAtHarvestDate;
 			s.cumulTTPhenoMaizeAtEmergence =  cumulTTPhenoMaizeAtEmergence ;
-			s.phase = phase_t ;
+			s.phase = phase ;
 			s.hasLastPrimordiumAppeared =  hasLastPrimordiumAppeared;
 			s1.transition_lig = transition_lig_t1;
 			s.hasSilkingStarted = hasSilkingStarted;

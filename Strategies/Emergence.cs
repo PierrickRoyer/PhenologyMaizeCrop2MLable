@@ -569,14 +569,13 @@ namespace PhenologyMaizeCrop2ML.Strategies
 		private void CalculateModel(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
 		{
 			//temp dummy emergence modele
-			double cumulTT6 = s.cumulTT[6];
+
 			double EmergenceLag = s.EmergenceLag;
 
-			double TTemergence;
+			double TTemergence = EmergenceLag;
 
 		
-
-			TTemergence = /*10 * SowingDepth / (k_emergence * EmergenceLag) +*/ EmergenceLag; //*10 conversion from cm to mm
+			 /*10 * SowingDepth / (k_emergence * EmergenceLag) +*/ ; //*10 conversion from cm to mm
 																							  //phenologymaizestate.TTemergence = Dse;
 																							  //Console.WriteLine(phenologymaizestate.TTemergence + " " + SowingDepth + " " + k_emergence + " " + EmergenceLag + " " + EmergenceLag);
 

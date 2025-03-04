@@ -424,8 +424,8 @@ namespace PhenologyMaizeCrop2ML.Strategies
 		private void CalculateModel(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
 		{
 
-			string currentBBCHStage_t = s.currentBBCHStage;
-			int hasBBCHStageChanged_t = s.hasBBCHStageChanged;
+			string currentBBCHStage = s.currentBBCHStage;
+			int hasBBCHStageChanged = s.hasBBCHStageChanged;
 
 			double Ntip = s.Ntip;
 			double LNlig = s.LNlig;
@@ -440,10 +440,10 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			List<DateTime> calendarDates_t1 = s1.calendarDates;
 			List<double> calendarCumuls_t1 = s1.calendarCumuls;
 
-			int hasFlagLeafAppeared_t = s.hasFlagLeafAppeared;
+			int hasFlagLeafAppeared = s.hasFlagLeafAppeared;
 			int hasFlagLeafAppeared_t1 = s1.hasFlagLeafAppeared;
 
-			int HasFlagLeafLiguleAppeared_t = s.HasFlagLeafLiguleAppeared;
+			int HasFlagLeafLiguleAppeared = s.HasFlagLeafLiguleAppeared;
 			int HasFlagLeafLiguleAppeared_t1 = s1.HasFlagLeafLiguleAppeared;
 
 
@@ -455,7 +455,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 				{
 					if (hasFlagLeafAppeared_t1 == 0 && (Nfinal > 0 && Ntip == (int)(Nfinal + 0.5))) // NFinal > 0 ???!?
 					{
-						hasFlagLeafAppeared_t = 1;
+						hasFlagLeafAppeared = 1;
 						//LucilelCode with Calendar :
 						/*if (!s1.Calendar[GrowthStageMaize.LastLeafVisible].HasValue)
 						{
@@ -471,21 +471,21 @@ namespace PhenologyMaizeCrop2ML.Strategies
 							calendarDates.Add(currentdate);
 							calendarCumuls.Add(cumulTT6);
 
-							currentBBCHStage_t = "LastLeafVisible";
-							hasBBCHStageChanged_t = 1;
+							currentBBCHStage = "LastLeafVisible";
+							hasBBCHStageChanged = 1;
 						}
 
 					}
 					else
 					{
-						hasFlagLeafAppeared_t = hasFlagLeafAppeared_t1;
+						hasFlagLeafAppeared = hasFlagLeafAppeared_t1;
 						calendarMoments = calendarMoments_t1;
 						calendarDates = calendarDates_t1;
 						calendarCumuls = calendarCumuls_t1;
 					}
 					if (HasFlagLeafLiguleAppeared_t1 == 0 && (Nfinal > 0 && LNlig == (int)(Nfinal + 0.5)))
 					{
-						HasFlagLeafLiguleAppeared_t = 1;
+						HasFlagLeafLiguleAppeared = 1;
 						/*					if (!s1.Calendar[GrowthStageMaize.BBCH_1n_FlagLeafLiguleJustVisible].HasValue)
 											{
 												s.Calendar.Set(GrowthStageMaize.BBCH_1n_FlagLeafLiguleJustVisible, s.currentdate, s.cumulTT);
@@ -499,14 +499,14 @@ namespace PhenologyMaizeCrop2ML.Strategies
 							calendarDates.Add(currentdate);
 							calendarCumuls.Add(cumulTT6);
 
-							currentBBCHStage_t = "FlagLeafLiguleJustVisible";
-							hasBBCHStageChanged_t = 1;
+							currentBBCHStage = "FlagLeafLiguleJustVisible";
+							hasBBCHStageChanged = 1;
 						}
 
 					}
 					else
 					{
-						HasFlagLeafLiguleAppeared_t = HasFlagLeafLiguleAppeared_t1;
+						HasFlagLeafLiguleAppeared = HasFlagLeafLiguleAppeared_t1;
 						calendarMoments = calendarMoments_t1;
 						calendarDates = calendarDates_t1;
 						calendarCumuls = calendarCumuls_t1;
@@ -526,11 +526,11 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			s.calendarDates = calendarDates;
 			s.calendarCumuls = calendarCumuls;
 
-			s.HasFlagLeafLiguleAppeared = HasFlagLeafLiguleAppeared_t;
-			s.hasFlagLeafAppeared = hasFlagLeafAppeared_t;
+			s.HasFlagLeafLiguleAppeared = HasFlagLeafLiguleAppeared;
+			s.hasFlagLeafAppeared = hasFlagLeafAppeared;
 
-			s.currentBBCHStage = currentBBCHStage_t;
-			s.hasBBCHStageChanged = hasBBCHStageChanged_t;
+			s.currentBBCHStage = currentBBCHStage;
+			s.hasBBCHStageChanged = hasBBCHStageChanged;
 		}
 
 		#endregion

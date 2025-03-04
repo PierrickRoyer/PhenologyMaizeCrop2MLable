@@ -495,24 +495,24 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			int hasGerminationHappened_t1 = s1.hasGerminationHappened;
 			double SowingDensity = s.SowingDensity;
 			double plantDensityAfterGermination;
-			int hasGerminationHappened_t;
+			int hasGerminationHappened = s.hasGerminationHappened;
 
 			if (hasGerminationHappened_t1 == 0)
 			{
 				//Temp dummy model of Germiantion
 				double SoilHumidityStressFactor = 1;
 
-				hasGerminationHappened_t = 1;
+				hasGerminationHappened = 1;
 				plantDensityAfterGermination = SowingDensity * SoilHumidityStressFactor;
 
 				
 			}
             else 
 			{ 
-				hasGerminationHappened_t = hasGerminationHappened_t1;
+				hasGerminationHappened = hasGerminationHappened_t1;
 				plantDensityAfterGermination = -1;
 			}
-			s.hasGerminationHappened = hasGerminationHappened_t;
+			s.hasGerminationHappened = hasGerminationHappened;
 			s.plantDensityAfterGermination = plantDensityAfterGermination;
 
 

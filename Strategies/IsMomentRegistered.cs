@@ -323,10 +323,10 @@ namespace PhenologyMaizeCrop2ML.Strategies
             List<double> calendarCumuls_t1 = s1.calendarCumuls;
 
 
-            double cumulTTFromBBCH_63;
-            double cumulTTFromBBCH_1n;
-            double cumulTTFromLastLeaf;
-            int isMomentRegistredBBCH_1n;
+            double cumulTTFromBBCH_63 = 0.0 ;
+            double cumulTTFromBBCH_1n = 0.0;
+            double cumulTTFromLastLeaf = 0.0;
+            int isMomentRegistredBBCH_1n = 0;
 
 
             if (cumulTT6 > 0)
@@ -347,7 +347,6 @@ namespace PhenologyMaizeCrop2ML.Strategies
                 {
 
                     int indexFlagLeaf  = calendarMoments_t1.IndexOf("FlagLeafLiguleJustVisible");
-
                     cumulTTFromBBCH_1n = cumulTT6 - calendarCumuls_t1[indexFlagLeaf];
 
                 }
