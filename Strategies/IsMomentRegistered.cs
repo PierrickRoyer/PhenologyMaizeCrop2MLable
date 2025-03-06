@@ -91,7 +91,27 @@ namespace PhenologyMaizeCrop2ML.Strategies
             pd7.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.cumulTTFromLastLeaf);
             _outputs0_0.Add(pd7);
 
-       
+            pd1.DomainClassType = typeof(PhenologyMaizeCrop2ML.DomainClass.PhenologyMaizeCrop2MLState);
+            pd1.PropertyName = "calendarMoments";
+            pd1.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.calendarMoments).ValueType.TypeForCurrentValue;
+            pd1.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.calendarMoments);
+            _outputs0_0.Add(pd1);
+
+
+            PropertyDescription pd2 = new PropertyDescription();
+            pd2.DomainClassType = typeof(PhenologyMaizeCrop2ML.DomainClass.PhenologyMaizeCrop2MLState);
+            pd2.PropertyName = "calendarDates";
+            pd2.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.calendarDates).ValueType.TypeForCurrentValue;
+            pd2.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.calendarDates);
+            _outputs0_0.Add(pd2);
+
+            PropertyDescription pd3 = new PropertyDescription();
+            pd3.DomainClassType = typeof(PhenologyMaizeCrop2ML.DomainClass.PhenologyMaizeCrop2MLState);
+            pd3.PropertyName = "calendarCumuls";
+            pd3.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls).ValueType.TypeForCurrentValue;
+            pd3.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls);
+            _outputs0_0.Add(pd3);
+
 
             mo0_0.Outputs = _outputs0_0;
             //Associated strategies
@@ -357,13 +377,27 @@ namespace PhenologyMaizeCrop2ML.Strategies
                     cumulTTFromLastLeaf = cumulTT6 - calendarCumuls_t1[indexLastLeaf];
                 }
 
-                s.cumulTTFromBBCH_63 = cumulTTFromBBCH_63;
-                s.cumulTTFromBBCH_1n = cumulTTFromBBCH_1n;
-                s.cumulTTFromLastLeaf = cumulTTFromLastLeaf;
-                s.isMomentRegistredBBCH_1n = isMomentRegistredBBCH_1n;
+
 
             }
+            s.cumulTTFromBBCH_63 = cumulTTFromBBCH_63;
+            s.cumulTTFromBBCH_1n = cumulTTFromBBCH_1n;
+            s.cumulTTFromLastLeaf = cumulTTFromLastLeaf;
+            s.isMomentRegistredBBCH_1n = isMomentRegistredBBCH_1n;
+            s.calendarMoments = calendarMoments_t1;
+            s.calendarCumuls = calendarCumuls_t1;
+            s.calendarDates = calendarDates_t1;
 
         }
+/*        public void Init(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
+        {
+            
+            s1.calendarMoments.Add("Sowing");
+            s1.calendarCumuls.Add(0.0);
+            s1.calendarDates.Add(s.currentdate);
+
+        }
+*/
+
     }
 }

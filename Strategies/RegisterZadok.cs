@@ -122,6 +122,33 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			pd7.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls).ValueType.TypeForCurrentValue;
 			pd7.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls);
 			_inputs0_0.Add(pd7);
+			PropertyDescription pd11 = new PropertyDescription();
+			pd11.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd11.PropertyName = "IsLatestLeafInternodeLengthPotPositive";
+			pd11.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.IsLatestLeafInternodeLengthPotPositive).ValueType.TypeForCurrentValue;
+			pd11.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.IsLatestLeafInternodeLengthPotPositive);
+			_inputs0_0.Add(pd11);
+			PropertyDescription pd12 = new PropertyDescription();
+			pd12.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd12.PropertyName = "hasSilkingStarted";
+			pd12.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.hasSilkingStarted).ValueType.TypeForCurrentValue;
+			pd12.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasSilkingStarted);
+			_inputs0_0.Add(pd12);
+			PropertyDescription pd13 = new PropertyDescription();
+			pd13.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd13.PropertyName = "currentBBCHStage";
+			pd13.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage).ValueType.TypeForCurrentValue;
+			pd13.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage);
+			_inputs0_0.Add(pd13);
+			PropertyDescription pd14 = new PropertyDescription();
+			pd14.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd14.PropertyName = "hasBBCHStageChanged";
+			pd14.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.hasBBCHStageChanged).ValueType.TypeForCurrentValue;
+			pd14.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasBBCHStageChanged);
+			_inputs0_0.Add(pd14);
+
+
+
 			/*			PropertyDescription pd5 = new PropertyDescription();
 						pd5.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
 						pd5.PropertyName = "Calendar";
@@ -158,6 +185,18 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			pd10.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls).ValueType.TypeForCurrentValue;
 			pd10.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls);
 			_outputs0_0.Add(pd10);
+			PropertyDescription pd15 = new PropertyDescription();
+			pd15.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd15.PropertyName = "currentBBCHStage";
+			pd15.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage).ValueType.TypeForCurrentValue;
+			pd15.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage);
+			_outputs0_0.Add(pd15);
+			PropertyDescription pd16 = new PropertyDescription();
+			pd16.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd16.PropertyName = "hasBBCHStageChanged";
+			pd16.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.hasBBCHStageChanged).ValueType.TypeForCurrentValue;
+			pd16.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasBBCHStageChanged);
+			_outputs0_0.Add(pd16);
 
 
 			mo0_0.Inputs = _inputs0_0;
@@ -466,10 +505,10 @@ namespace PhenologyMaizeCrop2ML.Strategies
 				PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls.CurrentValue = s.calendarCumuls;
 				PhenologyMaizeCrop2MLStateVarInfo.calendarMoments.CurrentValue = s.calendarMoments;
 				PhenologyMaizeCrop2MLStateVarInfo.calendarDates.CurrentValue = s.calendarDates;
+				PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage.CurrentValue = s.currentBBCHStage;
 
-
-				//Create the collection of the conditions to test
-				ConditionsCollection prc = new ConditionsCollection();
+                //Create the collection of the conditions to test
+                ConditionsCollection prc = new ConditionsCollection();
 				Preconditions pre = new Preconditions();
 
 
@@ -479,19 +518,21 @@ namespace PhenologyMaizeCrop2ML.Strategies
 				if (r8.ApplicableVarInfoValueTypes.Contains(PhenologyMaizeCrop2MLStateVarInfo.calendarMoments.ValueType)) { prc.AddCondition(r8); }
 				RangeBasedCondition r9 = new RangeBasedCondition(PhenologyMaizeCrop2MLStateVarInfo.calendarDates);
 				if (r9.ApplicableVarInfoValueTypes.Contains(PhenologyMaizeCrop2MLStateVarInfo.calendarDates.ValueType)) { prc.AddCondition(r9); }
+                RangeBasedCondition r10 = new RangeBasedCondition(PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage);
+                if (r10.ApplicableVarInfoValueTypes.Contains(PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage.ValueType)) { prc.AddCondition(r10); }
 
 
 
-				//GENERATED CODE END - PLACE YOUR CUSTOM CODE BELOW - Section4
-				//Code written below will not be overwritten by a future code generation
+                //GENERATED CODE END - PLACE YOUR CUSTOM CODE BELOW - Section4
+                //Code written below will not be overwritten by a future code generation
 
 
 
-				//End of custom code. Do not place your custom code below. It will be overwritten by a future code generation.
-				//PLACE YOUR CUSTOM CODE ABOVE - GENERATED CODE START - Section4 
+                //End of custom code. Do not place your custom code below. It will be overwritten by a future code generation.
+                //PLACE YOUR CUSTOM CODE ABOVE - GENERATED CODE START - Section4 
 
-				//Get the evaluation of postconditions
-				string postConditionsResult = pre.VerifyPostconditions(prc, callID);
+                //Get the evaluation of postconditions
+                string postConditionsResult = pre.VerifyPostconditions(prc, callID);
 				//if we have errors, send it to the configured output 
 				if (!string.IsNullOrEmpty(postConditionsResult)) { pre.TestsOut(postConditionsResult, true, "PostConditions errors in component SiriusQualityMaizePheno.Strategies, strategy " + this.GetType().Name); }
 				return postConditionsResult;
@@ -522,9 +563,9 @@ namespace PhenologyMaizeCrop2ML.Strategies
 				PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls.CurrentValue = s.calendarCumuls;
 				PhenologyMaizeCrop2MLStateVarInfo.calendarMoments.CurrentValue = s.calendarMoments;
 				PhenologyMaizeCrop2MLStateVarInfo.calendarDates.CurrentValue = s.calendarDates;
-
-				//Create the collection of the conditions to test
-				ConditionsCollection prc = new ConditionsCollection();
+                PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage.CurrentValue = s.currentBBCHStage;
+                //Create the collection of the conditions to test
+                ConditionsCollection prc = new ConditionsCollection();
 				Preconditions pre = new Preconditions();
 
 
@@ -543,8 +584,11 @@ namespace PhenologyMaizeCrop2ML.Strategies
 				if (r8.ApplicableVarInfoValueTypes.Contains(PhenologyMaizeCrop2MLStateVarInfo.calendarMoments.ValueType)) { prc.AddCondition(r8); }
 				RangeBasedCondition r9 = new RangeBasedCondition(PhenologyMaizeCrop2MLStateVarInfo.calendarDates);
 				if (r9.ApplicableVarInfoValueTypes.Contains(PhenologyMaizeCrop2MLStateVarInfo.calendarDates.ValueType)) { prc.AddCondition(r9); }
+                RangeBasedCondition r10 = new RangeBasedCondition(PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage);
+                if (r10.ApplicableVarInfoValueTypes.Contains(PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage.ValueType)) { prc.AddCondition(r10); }
 
-				prc.AddCondition(new RangeBasedCondition(_modellingOptionsManager.GetParameterByName("Der")));
+
+                prc.AddCondition(new RangeBasedCondition(_modellingOptionsManager.GetParameterByName("Der")));
 				prc.AddCondition(new RangeBasedCondition(_modellingOptionsManager.GetParameterByName("slopeTSFLN")));
 				prc.AddCondition(new RangeBasedCondition(_modellingOptionsManager.GetParameterByName("intTSFLN")));
 				prc.AddCondition(new RangeBasedCondition(_modellingOptionsManager.GetParameterByName("Nfinal")));

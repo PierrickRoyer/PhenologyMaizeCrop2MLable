@@ -25,19 +25,19 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			ModellingOptions mo0_0 = new ModellingOptions();
 			//Parameters
 			List<VarInfo> _parameters0_0 = new List<VarInfo>();
-			VarInfo v1 = new VarInfo();
-			v1.DefaultValue = 10;
-			v1.Description = "Maize final leaf number";
-			v1.Id = 0;
-			v1.MaxValue = 100;
-			v1.MinValue = 0;
-			v1.Name = "Nfinal";
-			v1.Size = 1;
-			v1.Units = "leaf";
-			v1.URL = "";
-			v1.VarType = CRA.ModelLayer.Core.VarInfo.Type.STATE;
-			v1.ValueType = VarInfoValueTypes.GetInstanceForName("Double");
-			_parameters0_0.Add(v1);
+			VarInfo v5 = new VarInfo();
+			v5.DefaultValue = 16;
+			v5.Description = "final leaf number of the genotype";
+			v5.Id = 0;
+			v5.MaxValue = 25;
+			v5.MinValue = 0;
+			v5.Name = "Nfinal";
+			v5.Size = 1;
+			v5.Units = "leaf";
+			v5.URL = "";
+			v5.VarType = CRA.ModelLayer.Core.VarInfo.Type.STATE;
+			v5.ValueType = VarInfoValueTypes.GetInstanceForName("Double");
+			_parameters0_0.Add(v5);
 			mo0_0.Parameters = _parameters0_0;
 			//Inputs
 			List<PropertyDescription> _inputs0_0 = new List<PropertyDescription>();
@@ -59,36 +59,124 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			pd3.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.currentdate)).ValueType.TypeForCurrentValue;
 			pd3.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.currentdate);
 			_inputs0_0.Add(pd3);
+			PropertyDescription pd13 = new PropertyDescription();
+			pd13.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd13.PropertyName = "currentBBCHStage";
+			pd13.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage)).ValueType.TypeForCurrentValue;
+			pd13.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage);
+			_inputs0_0.Add(pd13);
+			PropertyDescription pd14 = new PropertyDescription();
+			pd14.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd14.PropertyName = "hasBBCHStageChanged";
+			pd14.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.hasBBCHStageChanged)).ValueType.TypeForCurrentValue;
+			pd14.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasBBCHStageChanged);
+			_inputs0_0.Add(pd14);
+			PropertyDescription pd15 = new PropertyDescription();
+			pd15.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd15.PropertyName = "Ntip";
+			pd15.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.Ntip)).ValueType.TypeForCurrentValue;
+			pd15.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.Ntip);
+			_inputs0_0.Add(pd15);
+			PropertyDescription pd16 = new PropertyDescription();
+			pd16.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd16.PropertyName = "LNlig";
+			pd16.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.LNlig)).ValueType.TypeForCurrentValue;
+			pd16.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.LNlig);
+			_inputs0_0.Add(pd16);
+			PropertyDescription pd24 = new PropertyDescription();
+			pd24.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd24.PropertyName = "hasFlagLeafAppeared";
+			pd24.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.hasFlagLeafAppeared)).ValueType.TypeForCurrentValue;
+			pd24.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasFlagLeafAppeared);
+			_inputs0_0.Add(pd24);
 			PropertyDescription pd4 = new PropertyDescription();
 			pd4.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
 			pd4.PropertyName = "HasFlagLeafLiguleAppeared";
 			pd4.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.HasFlagLeafLiguleAppeared)).ValueType.TypeForCurrentValue;
 			pd4.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.HasFlagLeafLiguleAppeared);
 			_inputs0_0.Add(pd4);
-/*			PropertyDescription pd5 = new PropertyDescription();
+			PropertyDescription pd5 = new PropertyDescription();
 			pd5.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
-			pd5.PropertyName = "Calendar";
-			pd5.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.Calendar)).ValueType.TypeForCurrentValue;
-			pd5.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.Calendar);
+			pd5.PropertyName = "calendarMoments";
+			pd5.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.calendarMoments).ValueType.TypeForCurrentValue;
+			pd5.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.calendarMoments);
 			_inputs0_0.Add(pd5);
-			mo0_0.Inputs = _inputs0_0;*/
+			PropertyDescription pd6 = new PropertyDescription();
+			pd6.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd6.PropertyName = "calendarDates";
+			pd6.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.calendarDates).ValueType.TypeForCurrentValue;
+			pd6.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.calendarDates);
+			_inputs0_0.Add(pd6);
+			PropertyDescription pd7 = new PropertyDescription();
+			pd7.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd7.PropertyName = "calendarCumuls";
+			pd7.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls).ValueType.TypeForCurrentValue;
+			pd7.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls);
+			_inputs0_0.Add(pd7);
+			mo0_0.Inputs = _inputs0_0;
+			/*			PropertyDescription pd5 = new PropertyDescription();
+						pd5.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+						pd5.PropertyName = "Calendar";
+						pd5.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.Calendar)).ValueType.TypeForCurrentValue;
+						pd5.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.Calendar);
+						_inputs0_0.Add(pd5);
+						mo0_0.Inputs = _inputs0_0;*/
 
 
 			//Outputs
 			List<PropertyDescription> _outputs0_0 = new List<PropertyDescription>();
-			PropertyDescription pd6 = new PropertyDescription();
-			pd6.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
-			pd6.PropertyName = "hasLastPrimordiumAppeared";
-			pd6.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.hasLastPrimordiumAppeared)).ValueType.TypeForCurrentValue;
-			pd6.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasLastPrimordiumAppeared);
-			_outputs0_0.Add(pd6);
-			PropertyDescription pd7 = new PropertyDescription();
-/*			pd7.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
-			pd7.PropertyName = "Calendar";
-			pd7.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.Calendar)).ValueType.TypeForCurrentValue;
-			pd7.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.Calendar);
-			_outputs0_0.Add(pd7);
-			mo0_0.Outputs = _outputs0_0;*/
+			PropertyDescription pd8 = new PropertyDescription();
+			pd8.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd8.PropertyName = "HasFlagLeafLiguleAppeared";
+			pd8.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.HasFlagLeafLiguleAppeared)).ValueType.TypeForCurrentValue;
+			pd8.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.HasFlagLeafLiguleAppeared);
+			_outputs0_0.Add(pd8);
+			PropertyDescription pd18 = new PropertyDescription();
+			pd18.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd18.PropertyName = "hasFlagLeafAppeared";
+			pd18.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.hasFlagLeafAppeared)).ValueType.TypeForCurrentValue;
+			pd18.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasFlagLeafAppeared);
+			_outputs0_0.Add(pd18);
+			PropertyDescription pd19 = new PropertyDescription();
+			pd19.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd19.PropertyName = "currentBBCHStage";
+			pd19.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage).ValueType.TypeForCurrentValue;
+			pd19.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.currentBBCHStage);
+			_outputs0_0.Add(pd19);
+			PropertyDescription pd20 = new PropertyDescription();
+			pd20.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd20.PropertyName = "hasBBCHStageChanged";
+			pd20.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.hasBBCHStageChanged).ValueType.TypeForCurrentValue;
+			pd20.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasBBCHStageChanged);
+			_outputs0_0.Add(pd20);
+			PropertyDescription pd9 = new PropertyDescription();
+			pd9.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd9.PropertyName = "calendarMoments";
+			pd9.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.calendarMoments).ValueType.TypeForCurrentValue;
+			pd9.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.calendarMoments);
+			_outputs0_0.Add(pd9);
+			PropertyDescription pd10 = new PropertyDescription();
+			pd10.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd10.PropertyName = "calendarDates";
+			pd10.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.calendarDates).ValueType.TypeForCurrentValue;
+			pd10.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.calendarDates);
+			_outputs0_0.Add(pd10);
+			PropertyDescription pd11 = new PropertyDescription();
+			pd11.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd11.PropertyName = "calendarCumuls";
+			pd11.PropertyType = (PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls).ValueType.TypeForCurrentValue;
+			pd11.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.calendarCumuls);
+			_outputs0_0.Add(pd11);
+			mo0_0.Outputs = _outputs0_0;
+
+
+			/*			PropertyDescription pd7 = new PropertyDescription();
+						pd7.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+						pd7.PropertyName = "Calendar";
+						pd7.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.Calendar)).ValueType.TypeForCurrentValue;
+						pd7.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.Calendar);
+						_outputs0_0.Add(pd7);
+						mo0_0.Outputs = _outputs0_0;*/
 			//Associated strategies
 			List<string> lAssStrat0_0 = new List<string>();
 			mo0_0.AssociatedStrategies = lAssStrat0_0;
@@ -215,13 +303,13 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			{
 				VarInfo vi = _modellingOptionsManager.GetParameterByName("Nfinal");
 				if (vi != null && vi.CurrentValue != null) return (Double)vi.CurrentValue;
-				else throw new Exception("Parameter 'Nfinal' not found (or found null) in strategy 'UpdateLeafFlag'");
+				else throw new Exception("Parameter 'Nfinal' not found (or found null) in strategy 'CalculateLeafNumber'");
 			}
 			set
 			{
 				VarInfo vi = _modellingOptionsManager.GetParameterByName("Nfinal");
 				if (vi != null) vi.CurrentValue = value;
-				else throw new Exception("Parameter 'Nfinal' not found in strategy 'UpdateLeafFlag'");
+				else throw new Exception("Parameter 'Nfinal' not found in strategy 'CalculateLeafNumber'");
 			}
 		}
 
@@ -258,10 +346,10 @@ namespace PhenologyMaizeCrop2ML.Strategies
 		private static void SetStaticParametersVarInfoDefinitions()
 		{
 			NfinalVarInfo.Name = "Nfinal";
-			NfinalVarInfo.Description = " Maize final leaf number";
-			NfinalVarInfo.MaxValue = 100;
+			NfinalVarInfo.Description = " final leaf number of the genotype";
+			NfinalVarInfo.MaxValue = 25;
 			NfinalVarInfo.MinValue = 0;
-			NfinalVarInfo.DefaultValue = 10;
+			NfinalVarInfo.DefaultValue = 16;
 			NfinalVarInfo.Units = "leaf";
 			NfinalVarInfo.ValueType = CRA.ModelLayer.Core.VarInfoValueTypes.GetInstanceForName("Double");
 
@@ -377,8 +465,6 @@ namespace PhenologyMaizeCrop2ML.Strategies
 				if (r9.ApplicableVarInfoValueTypes.Contains(PhenologyMaizeCrop2MLStateVarInfo.calendarDates.ValueType)) { prc.AddCondition(r9); }
 				prc.AddCondition(new RangeBasedCondition(_modellingOptionsManager.GetParameterByName("Nfinal")));
 
-
-
 				//GENERATED CODE END - PLACE YOUR CUSTOM CODE BELOW - Section3
 				//Code written below will not be overwritten by a future code generation
 
@@ -429,9 +515,12 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 			double Ntip = s.Ntip;
 			double LNlig = s.LNlig;
-			DateTime currentdate = s.currentdate;
 			double LeafNumber = s.LeafNumber;
+
+
+			DateTime currentdate = s.currentdate;
 			double cumulTT6 = s.cumulTT[6];
+
 			List<string> calendarMoments = s.calendarMoments;
 			List<DateTime> calendarDates = s.calendarDates;
 			List<double> calendarCumuls = s.calendarCumuls;
@@ -440,7 +529,9 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			List<DateTime> calendarDates_t1 = s1.calendarDates;
 			List<double> calendarCumuls_t1 = s1.calendarCumuls;
 
+
 			int hasFlagLeafAppeared = s.hasFlagLeafAppeared;
+
 			int hasFlagLeafAppeared_t1 = s1.hasFlagLeafAppeared;
 
 			int HasFlagLeafLiguleAppeared = s.HasFlagLeafLiguleAppeared;
@@ -519,20 +610,30 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 
 
+
+				s.calendarMoments = calendarMoments;
+				s.calendarDates = calendarDates;
+				s.calendarCumuls = calendarCumuls;
+
+				s.HasFlagLeafLiguleAppeared = HasFlagLeafLiguleAppeared;
+				s.hasFlagLeafAppeared = hasFlagLeafAppeared;
+
+				s.currentBBCHStage = currentBBCHStage;
+				s.hasBBCHStageChanged = hasBBCHStageChanged;
 			}
-
-
-			s.calendarMoments = calendarMoments;
-			s.calendarDates = calendarDates;
-			s.calendarCumuls = calendarCumuls;
-
-			s.HasFlagLeafLiguleAppeared = HasFlagLeafLiguleAppeared;
-			s.hasFlagLeafAppeared = hasFlagLeafAppeared;
-
-			s.currentBBCHStage = currentBBCHStage;
-			s.hasBBCHStageChanged = hasBBCHStageChanged;
 		}
 
+/*		public void Init(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
+        {
+
+
+
+            s.HasFlagLeafLiguleAppeared = 0;
+			s.hasFlagLeafAppeared = 0;
+
+
+
+		}*/
 		#endregion
 
 	}

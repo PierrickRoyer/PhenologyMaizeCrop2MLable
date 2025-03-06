@@ -570,7 +570,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 		{
 			//temp dummy emergence modele
 
-			double EmergenceLag = s.EmergenceLag;
+
 
 			double TTemergence = EmergenceLag;
 

@@ -21,6 +21,8 @@ namespace PhenologyMaizeCrop2ML.Strategies
 		public UpdatePhase()
 		{
 
+		
+
 			ModellingOptions mo0_0 = new ModellingOptions();
 			//Parameters
 			List<VarInfo> _parameters0_0 = new List<VarInfo>();
@@ -246,8 +248,58 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			v15.ValueType = VarInfoValueTypes.GetInstanceForName("Date");
 			_parameters0_0.Add(v15);
 			mo0_0.Parameters = _parameters0_0;
+
 			//Inputs
 			List<PropertyDescription> _inputs0_0 = new List<PropertyDescription>();
+
+			PropertyDescription pd21 = new PropertyDescription();
+			pd21.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd21.PropertyName = "SoilWaterPot";
+			pd21.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.SoilWaterPot)).ValueType.TypeForCurrentValue;
+			pd21.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.SoilWaterPot);
+			_inputs0_0.Add(pd21);
+			PropertyDescription pd22 = new PropertyDescription();
+			pd22.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd22.PropertyName = "cumulTTFromLastLeaf";
+			pd22.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.cumulTTFromLastLeaf)).ValueType.TypeForCurrentValue;
+			pd22.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.cumulTTFromLastLeaf);
+			_inputs0_0.Add(pd22);
+			PropertyDescription pd23 = new PropertyDescription();
+			pd23.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd23.PropertyName = "GrainCumulTT";
+			pd23.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.GrainCumulTT)).ValueType.TypeForCurrentValue;
+			pd23.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.GrainCumulTT);
+			_inputs0_0.Add(pd23);
+			PropertyDescription pd24 = new PropertyDescription();
+			pd24.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd24.PropertyName = "hasLastPrimordiumAppeared";
+			pd24.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.hasLastPrimordiumAppeared)).ValueType.TypeForCurrentValue;
+			pd24.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasLastPrimordiumAppeared);
+			_inputs0_0.Add(pd24);
+			PropertyDescription pd25 = new PropertyDescription();
+			pd25.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd25.PropertyName = "hasLastPrimordiumAppeared";
+			pd25.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.hasLastPrimordiumAppeared)).ValueType.TypeForCurrentValue;
+			pd25.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasLastPrimordiumAppeared);
+			_inputs0_0.Add(pd25);
+			PropertyDescription pd26 = new PropertyDescription();
+			pd26.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd26.PropertyName = "transition_lig";
+			pd26.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.transition_lig)).ValueType.TypeForCurrentValue;
+			pd26.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.transition_lig);
+			_inputs0_0.Add(pd26);
+			PropertyDescription pd28 = new PropertyDescription();
+			pd28.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd28.PropertyName = "cumulTTPhenoMaizeAtEmergence";
+			pd28.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.cumulTTPhenoMaizeAtEmergence)).ValueType.TypeForCurrentValue;
+			pd28.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.cumulTTPhenoMaizeAtEmergence);
+			_inputs0_0.Add(pd28);
+			PropertyDescription pd0 = new PropertyDescription();
+			pd0.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd0.PropertyName = "currentdate";
+			pd0.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.currentdate)).ValueType.TypeForCurrentValue;
+			pd0.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.currentdate);
+			_inputs0_0.Add(pd0);
 			PropertyDescription pd1 = new PropertyDescription();
 			pd1.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
 			pd1.PropertyName = "cumulTT";
@@ -268,16 +320,17 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			_inputs0_0.Add(pd3);
 			PropertyDescription pd4 = new PropertyDescription();
 			pd4.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
-			pd4.PropertyName = "GAI";
-			pd4.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.GAI)).ValueType.TypeForCurrentValue;
-			pd4.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.GAI);
+			pd4.PropertyName = "Ntip";
+			pd4.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.Ntip)).ValueType.TypeForCurrentValue;
+			pd4.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.Ntip);
 			_inputs0_0.Add(pd4);
-			PropertyDescription pd5 = new PropertyDescription();
-			pd5.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
-			pd5.PropertyName = "phase";
-			pd5.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.phase)).ValueType.TypeForCurrentValue;
-			pd5.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.phase);
-			_inputs0_0.Add(pd5);
+			PropertyDescription pd14 = new PropertyDescription();
+			pd14.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd14.PropertyName = "GAI";
+			pd14.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.GAI)).ValueType.TypeForCurrentValue;
+			pd14.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.GAI);
+			_inputs0_0.Add(pd14);
+	
 			PropertyDescription pd6 = new PropertyDescription();
 			pd6.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
 			pd6.PropertyName = "hasGerminationHappened";
@@ -290,13 +343,27 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			pd7.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.hasSilkingStarted)).ValueType.TypeForCurrentValue;
 			pd7.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasSilkingStarted);
 			_inputs0_0.Add(pd7);
+			PropertyDescription pd17 = new PropertyDescription();
+			pd17.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd17.PropertyName = "hasFlagLeafAppeared";
+			pd17.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.hasFlagLeafAppeared)).ValueType.TypeForCurrentValue;
+			pd17.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasFlagLeafAppeared);
+			_inputs0_0.Add(pd17);
 			PropertyDescription pd8 = new PropertyDescription();
 			pd8.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
 			pd8.PropertyName = "cumulTTSoil";
 			pd8.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.cumulTTSoil)).ValueType.TypeForCurrentValue;
 			pd8.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.cumulTTSoil);
 			_inputs0_0.Add(pd8);
+			PropertyDescription pd18 = new PropertyDescription();
+			pd18.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd18.PropertyName = "TTemergence";
+			pd18.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.TTemergence)).ValueType.TypeForCurrentValue;
+			pd18.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.TTemergence);
+			_inputs0_0.Add(pd18);
 			mo0_0.Inputs = _inputs0_0;
+
+
 			//Outputs
 			List<PropertyDescription> _outputs0_0 = new List<PropertyDescription>();
 			PropertyDescription pd9 = new PropertyDescription();
@@ -304,6 +371,17 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			pd9.PropertyName = "phase";
 			pd9.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.phase)).ValueType.TypeForCurrentValue;
 			pd9.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.phase);
+			PropertyDescription pd19 = new PropertyDescription();
+			pd19.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd19.PropertyName = "cumulTTPhenoMaizeAtEmergence";
+			pd19.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.cumulTTPhenoMaizeAtEmergence)).ValueType.TypeForCurrentValue;
+			pd19.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.cumulTTPhenoMaizeAtEmergence);
+			_outputs0_0.Add(pd9);
+			PropertyDescription pd29 = new PropertyDescription();
+			pd29.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd29.PropertyName = "transition_lig";
+			pd29.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.transition_lig)).ValueType.TypeForCurrentValue;
+			pd29.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.transition_lig);
 			_outputs0_0.Add(pd9);
 			PropertyDescription pd10 = new PropertyDescription();
 			pd10.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
@@ -317,6 +395,19 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			pd11.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.hasSilkingStarted)).ValueType.TypeForCurrentValue;
 			pd11.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasSilkingStarted);
 			_outputs0_0.Add(pd11);
+			PropertyDescription pd12 = new PropertyDescription();
+			pd12.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+			pd12.PropertyName = "StopAtHarvestDate";
+			pd12.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.StopAtHarvestDate)).ValueType.TypeForCurrentValue;
+			pd12.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.StopAtHarvestDate);
+			_outputs0_0.Add(pd12);
+
+			/*			PropertyDescription pd24 = new PropertyDescription();
+						pd24.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+						pd24.PropertyName = "hasLastPrimordiumAppeared";
+						pd24.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.hasLastPrimordiumAppeared)).ValueType.TypeForCurrentValue;
+						pd24.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasLastPrimordiumAppeared);
+						_outputs0_0.Add(pd24);*/
 			mo0_0.Outputs = _outputs0_0;
 			//Associated strategies
 			List<string> lAssStrat0_0 = new List<string>();
@@ -1177,30 +1268,29 @@ namespace PhenologyMaizeCrop2ML.Strategies
 		{
 
 			double cumulTT6 = s.cumulTT[6];
-			int StopAtHarvest = s.StopAtHarvest;
+
 			DateTime currentdate = s.currentdate;
-			DateTime HarvestDate = s.HarvestDate;
+
 			double phase_t1 = s1.phase;
 			int hasGerminationHappened = s.hasGerminationHappened;
 			double TTemergence = s.TTemergence;
 			double Ntip = s.Ntip;
-			double Nfinal = s.Nfinal;
+			
 			int hasFlagLeafAppeared = s.hasFlagLeafAppeared;
 			double waterPot = s.SoilWaterPot;
 			double cumulTTFromLastLeaf = s.cumulTTFromLastLeaf;
 			double GrainCumulTT = s.GrainCumulTT;
 			double GAI = s.GAI;
-
+			int transition_lig_t1 = s1.transition_lig;
 
 			double ttFromLastLeafToAnthesis = PFLLAnth * phyltip;
 			double TTFromLastLeafToSilk = ttFromLastLeafToAnthesis + ASIbase * (1 + LERc * waterStressCoeffSilk * (-waterPot));
 
 
-			int StopAtHarvestDate = s.StopAtHarvestDate;
-			double cumulTTPhenoMaizeAtEmergence = s.cumulTTPhenoMaizeAtEmergence;
-			double phase =s.phase;
+			int StopAtHarvestDate = 0;
+			double cumulTTPhenoMaizeAtEmergence = -999;
+			double phase =0 ;
 			int hasLastPrimordiumAppeared = s.hasLastPrimordiumAppeared;
-			int transition_lig_t1 = s.transition_lig_t1;
 			int hasSilkingStarted = s.hasSilkingStarted;
 
 			if (( StopAtHarvest == 1 ) && (currentdate == HarvestDate ) ) StopAtHarvestDate = 1;
@@ -1239,7 +1329,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 					}
 					else
 						{
-					phase = phase_t1;
+						phase = phase_t1;
 						}
 
 				}
@@ -1381,6 +1471,12 @@ namespace PhenologyMaizeCrop2ML.Strategies
 		}
 
 
+/*		public void Init(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
+		{
+			s1.transition_lig = 0;
+		}
+
+*/
 		#endregion
 
 	}

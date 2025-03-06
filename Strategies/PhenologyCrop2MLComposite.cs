@@ -118,8 +118,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			_parameters0_0.Add(v30);
 			VarInfo v31 = new CompositeStrategyVarInfo(_updatephase, "ASIbase");
 			_parameters0_0.Add(v31);
-			VarInfo v32 = new CompositeStrategyVarInfo(_updatephase, "phyltip");
-			_parameters0_0.Add(v32);
+
 			VarInfo v33 = new CompositeStrategyVarInfo(_updatephase, "btip");
 			_parameters0_0.Add(v33);
 			VarInfo v34 = new CompositeStrategyVarInfo(_emergence, "EmergenceLag");
@@ -1110,8 +1109,10 @@ namespace PhenologyMaizeCrop2ML.Strategies
 
 		}
 
-		public void Init(PhenologyState s, PhenologyState s1, PhenologyRate r, PhenologyAuxiliary a, PhenologyExogenous ex)
+		public void Init(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
 		{
+
+
 			s.cumulTTFromBBCH_63 = -999.0;
 			s.cumulTTFromBBCH_1n = -999.0;
 			s.cumulTTFromLastLeaf = -999.0;

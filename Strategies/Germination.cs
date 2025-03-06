@@ -493,24 +493,26 @@ namespace PhenologyMaizeCrop2ML.Strategies
 		private void CalculateModel(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
 		{
 			int hasGerminationHappened_t1 = s1.hasGerminationHappened;
-			double SowingDensity = s.SowingDensity;
-			double plantDensityAfterGermination;
 			int hasGerminationHappened = s.hasGerminationHappened;
+
+
+			double SoilHumidityStressFactor = 1;
+			double plantDensityAfterGermination = SowingDensity * SoilHumidityStressFactor;
 
 			if (hasGerminationHappened_t1 == 0)
 			{
 				//Temp dummy model of Germiantion
-				double SoilHumidityStressFactor = 1;
+
 
 				hasGerminationHappened = 1;
-				plantDensityAfterGermination = SowingDensity * SoilHumidityStressFactor;
+
 
 				
 			}
             else 
 			{ 
 				hasGerminationHappened = hasGerminationHappened_t1;
-				plantDensityAfterGermination = -1;
+				
 			}
 			s.hasGerminationHappened = hasGerminationHappened;
 			s.plantDensityAfterGermination = plantDensityAfterGermination;
