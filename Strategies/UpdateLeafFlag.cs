@@ -510,8 +510,13 @@ namespace PhenologyMaizeCrop2ML.Strategies
 		private void CalculateModel(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)
 		{
 
-			string currentBBCHStage = s.currentBBCHStage;
-			int hasBBCHStageChanged = s.hasBBCHStageChanged;
+			
+			string currentBBCHStage_t1 = s1.currentBBCHStage;
+			string currentBBCHStage = currentBBCHStage_t1;
+			
+			int hasBBCHStageChanged_t1 = s1.hasBBCHStageChanged;
+			int hasBBCHStageChanged = hasBBCHStageChanged_t1;
+
 
 			double Ntip = s.Ntip;
 			double LNlig = s.LNlig;
@@ -573,6 +578,8 @@ namespace PhenologyMaizeCrop2ML.Strategies
 						calendarMoments = calendarMoments_t1;
 						calendarDates = calendarDates_t1;
 						calendarCumuls = calendarCumuls_t1;
+						hasBBCHStageChanged = hasBBCHStageChanged_t1;
+						currentBBCHStage = currentBBCHStage_t1;
 					}
 					if (HasFlagLeafLiguleAppeared_t1 == 0 && (Nfinal > 0 && LNlig == (int)(Nfinal + 0.5)))
 					{
@@ -601,26 +608,36 @@ namespace PhenologyMaizeCrop2ML.Strategies
 						calendarMoments = calendarMoments_t1;
 						calendarDates = calendarDates_t1;
 						calendarCumuls = calendarCumuls_t1;
+						hasBBCHStageChanged = hasBBCHStageChanged_t1;
+						currentBBCHStage = currentBBCHStage_t1;
 					}
 
 
 
 
 				}
+                else
+                {
+					hasFlagLeafAppeared = hasFlagLeafAppeared_t1;
+					hasBBCHStageChanged = hasBBCHStageChanged_t1;
+					currentBBCHStage = currentBBCHStage_t1;
+					HasFlagLeafLiguleAppeared = HasFlagLeafLiguleAppeared_t1;
+				}
 
 
 
 
-				s.calendarMoments = calendarMoments;
-				s.calendarDates = calendarDates;
-				s.calendarCumuls = calendarCumuls;
-
-				s.HasFlagLeafLiguleAppeared = HasFlagLeafLiguleAppeared;
-				s.hasFlagLeafAppeared = hasFlagLeafAppeared;
-
-				s.currentBBCHStage = currentBBCHStage;
-				s.hasBBCHStageChanged = hasBBCHStageChanged;
 			}
+
+			s.calendarMoments = calendarMoments;
+			s.calendarDates = calendarDates;
+			s.calendarCumuls = calendarCumuls;
+
+			s.HasFlagLeafLiguleAppeared = HasFlagLeafLiguleAppeared;
+			s.hasFlagLeafAppeared = hasFlagLeafAppeared;
+
+			s.currentBBCHStage = currentBBCHStage;
+			s.hasBBCHStageChanged = hasBBCHStageChanged;
 		}
 
 /*		public void Init(PhenologyMaizeCrop2MLState s, PhenologyMaizeCrop2MLState s1, PhenologyMaizeCrop2MLRate r, PhenologyMaizeCrop2MLAuxiliary a, PhenologyMaizeCrop2MLExogenous ex)

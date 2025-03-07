@@ -287,6 +287,8 @@ namespace PhenologyMaizeCrop2ML.Strategies
             pd13.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.AllTTLeavesCalculated);
             _inputs0_0.Add(pd13);
             mo0_0.Inputs = _inputs0_0;
+
+
             //Outputs
             List<PropertyDescription> _outputs0_0 = new List<PropertyDescription>();
             PropertyDescription pd14 = new PropertyDescription();
@@ -350,6 +352,12 @@ namespace PhenologyMaizeCrop2ML.Strategies
             pd23.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.AllTTLeavesCalculated);
             _outputs0_0.Add(pd23);
             mo0_0.Outputs = _outputs0_0;
+            PropertyDescription pd4 = new PropertyDescription();
+            pd4.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
+            pd4.PropertyName = "HasFlagLeafLiguleAppeared";
+            pd4.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.HasFlagLeafLiguleAppeared)).ValueType.TypeForCurrentValue;
+            pd4.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.HasFlagLeafLiguleAppeared);
+            _outputs0_0.Add(pd4);
             //Associated strategies
             List<string> lAssStrat0_0 = new List<string>();
             mo0_0.AssociatedStrategies = lAssStrat0_0;
@@ -1104,7 +1112,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
         {
             double phase = s.phase;
 
-            int HasFlagLeafLiguleAppeared = s.HasFlagLeafLiguleAppeared;
+            int HasFlagLeafLiguleAppeared = s1.HasFlagLeafLiguleAppeared;
             int AllTTLeavesCalculated_t1 = s1.AllTTLeavesCalculated;
 
             double LeafNumber_t1 = s1.LeafNumber;
@@ -1342,7 +1350,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
                 s.liguleTT = liguleTT;
                 s.tipTT = tipTT;
                 s.fullyExpTT = fullyExpTT;
-
+                s.HasFlagLeafLiguleAppeared = HasFlagLeafLiguleAppeared;
 
 
 

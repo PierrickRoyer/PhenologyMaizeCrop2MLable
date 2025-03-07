@@ -282,12 +282,12 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			pd25.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.hasLastPrimordiumAppeared)).ValueType.TypeForCurrentValue;
 			pd25.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.hasLastPrimordiumAppeared);
 			_inputs0_0.Add(pd25);
-			PropertyDescription pd26 = new PropertyDescription();
+/*			PropertyDescription pd26 = new PropertyDescription();
 			pd26.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
 			pd26.PropertyName = "transition_lig";
 			pd26.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.transition_lig)).ValueType.TypeForCurrentValue;
 			pd26.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.transition_lig);
-			_inputs0_0.Add(pd26);
+			_inputs0_0.Add(pd26);*/
 			PropertyDescription pd28 = new PropertyDescription();
 			pd28.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
 			pd28.PropertyName = "cumulTTPhenoMaizeAtEmergence";
@@ -377,12 +377,12 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			pd19.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.cumulTTPhenoMaizeAtEmergence)).ValueType.TypeForCurrentValue;
 			pd19.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.cumulTTPhenoMaizeAtEmergence);
 			_outputs0_0.Add(pd9);
-			PropertyDescription pd29 = new PropertyDescription();
+			/*PropertyDescription pd29 = new PropertyDescription();
 			pd29.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
 			pd29.PropertyName = "transition_lig";
 			pd29.PropertyType = ((PhenologyMaizeCrop2MLStateVarInfo.transition_lig)).ValueType.TypeForCurrentValue;
 			pd29.PropertyVarInfo = (PhenologyMaizeCrop2MLStateVarInfo.transition_lig);
-			_outputs0_0.Add(pd9);
+			_outputs0_0.Add(pd9);*/
 			PropertyDescription pd10 = new PropertyDescription();
 			pd10.DomainClassType = typeof(PhenologyMaizeCrop2MLState);
 			pd10.PropertyName = "hasLastPrimordiumAppeared";
@@ -1274,14 +1274,15 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			double phase_t1 = s1.phase;
 			int hasGerminationHappened = s.hasGerminationHappened;
 			double TTemergence = s.TTemergence;
-			double Ntip = s.Ntip;
+			double Ntip = s1.Ntip;
 			
-			int hasFlagLeafAppeared = s.hasFlagLeafAppeared;
+			int hasFlagLeafAppeared = s1.hasFlagLeafAppeared;
+			int hasLastPrimordiumAppeared = s1.hasLastPrimordiumAppeared;
 			double waterPot = s.SoilWaterPot;
 			double cumulTTFromLastLeaf = s.cumulTTFromLastLeaf;
 			double GrainCumulTT = s.GrainCumulTT;
 			double GAI = s.GAI;
-			int transition_lig_t1 = s1.transition_lig;
+
 
 			double ttFromLastLeafToAnthesis = PFLLAnth * phyltip;
 			double TTFromLastLeafToSilk = ttFromLastLeafToAnthesis + ASIbase * (1 + LERc * waterStressCoeffSilk * (-waterPot));
@@ -1290,8 +1291,8 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			int StopAtHarvestDate = 0;
 			double cumulTTPhenoMaizeAtEmergence = -999;
 			double phase =0 ;
-			int hasLastPrimordiumAppeared = s.hasLastPrimordiumAppeared;
-			int hasSilkingStarted = s.hasSilkingStarted;
+
+			int hasSilkingStarted = s1.hasSilkingStarted;
 
 			if (( StopAtHarvest == 1 ) && (currentdate == HarvestDate ) ) StopAtHarvestDate = 1;
             else StopAtHarvestDate = 0;
@@ -1345,13 +1346,13 @@ namespace PhenologyMaizeCrop2ML.Strategies
 						phase = 2;//Floralinitiation  
 					}
 
-					if (Ntip >= (int)(Nfinal + 0.5) - NFSilkingInit) transition_lig_t1 = 1;
+					/*if (Ntip >= (int)(Nfinal + 0.5) - NFSilkingInit) transition_lig_t1 = 1;*/
 
 
 				}
 				else if (phase_t1 >= 2 && phase_t1 < 4)//FloralInitiationToAnthesis
 				{
-					if (Ntip >= (int)(Nfinal + 0.5) - NFSilkingInit) transition_lig_t1 = 1;
+					/*if (Ntip >= (int)(Nfinal + 0.5) - NFSilkingInit) transition_lig_t1 = 1;*/
 
 					if (hasFlagLeafAppeared == 1) //if ()  phenologymaizestate.HasFlagLeafLiguleAppeared == 1
 					{
@@ -1466,7 +1467,7 @@ namespace PhenologyMaizeCrop2ML.Strategies
 			s.cumulTTPhenoMaizeAtEmergence =  cumulTTPhenoMaizeAtEmergence ;
 			s.phase = phase ;
 			s.hasLastPrimordiumAppeared =  hasLastPrimordiumAppeared;
-			s1.transition_lig = transition_lig_t1;
+		/*	s.transition_lig = transition_lig_t1;*/
 			s.hasSilkingStarted = hasSilkingStarted;
 		}
 
